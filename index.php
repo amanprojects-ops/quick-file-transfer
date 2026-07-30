@@ -1,7 +1,7 @@
 <?php
 $upload_dir = __DIR__ . '/uploads/';
 $metadata_dir = __DIR__ . '/metadata/';
-$max_file_size = 1000 * 1024 * 1024;  // 1000 MB
+$max_file_size = 1 * 1024 * 1024 * 1024;  // 1 GB
 $blocked_extensions = ['php', 'php3', 'php4', 'php5', 'phtml', 'exe', 'sh', 'bat', 'cmd', 'pl', 'cgi', 'htaccess'];
 
 $message = '';
@@ -69,10 +69,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['fileToUpload'])) {
         if ($file_size > $max_file_size) {
             if (isset($_POST['ajax'])) {
                 header('Content-Type: application/json');
-                echo json_encode(['status' => 'error', 'message' => 'File is too large. Maximum size is 100MB.']);
+                echo json_encode(['status' => 'error', 'message' => 'File is too large. Maximum size is 1GB.']);
                 exit;
             }
-            $message = 'File is too large. Maximum size is 100MB.';
+            $message = 'File is too large. Maximum size is 1GB.';
             $message_type = 'error';
         } elseif (in_array($file_ext, $blocked_extensions)) {
             if (isset($_POST['ajax'])) {
@@ -592,7 +592,7 @@ if (is_dir($metadata_dir)) {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
                     </svg>
                     <div class="upload-text">Drag & drop your file here</div>
-                    <div class="upload-subtext">or click to browse (Max 100MB)</div>
+                    <div class="upload-subtext">or click to browse (Max 1GB)</div>
                     <input type="file" name="fileToUpload" id="fileToUpload" required>
                     <span id="selected-file-name"></span>
                 </div>
