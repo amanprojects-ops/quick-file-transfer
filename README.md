@@ -14,7 +14,7 @@ A sleek, fast, and secure PHP-based file sharing system. This application allows
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/file-share-system.git
+   git clone https://github.com/amanprojects-ops/quick-file-transfer.git
    ```
 2. **Setup the server:**
    Place the project files in your web server's root directory (e.g., `htdocs` for XAMPP, `www` for WAMP/LAMP).
